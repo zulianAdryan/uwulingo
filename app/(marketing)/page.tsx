@@ -4,6 +4,7 @@ import {
   ClerkLoading,
   SignedIn,
   SignedOut,
+  SignInButton,
   SignUpButton,
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
@@ -40,15 +41,15 @@ const Page = () => {
                   Get Started
                 </Button>
               </SignUpButton>
-              <SignUpButton
+              <SignInButton
                 mode="modal"
                 fallbackRedirectUrl="/learn"
-                signInFallbackRedirectUrl="/learn"
+                signUpFallbackRedirectUrl="/learn"
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   I already have an account
                 </Button>
-              </SignUpButton>
+              </SignInButton>
             </SignedOut>
             <SignedIn>
               <Button size="lg" variant="secondary" className="w-full" asChild>
