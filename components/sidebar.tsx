@@ -14,22 +14,22 @@ const routes = [
   {
     label: "learn",
     href: "/learn",
-    iconSrc: "/learn.svg",
+    iconSrc: "/icons/learn.svg",
   },
   {
     label: "leaderboard",
     href: "/leaderboard",
-    iconSrc: "/leaderboard.svg",
+    iconSrc: "/icons/leaderboard.svg",
   },
   {
     label: "quests",
     href: "/quests",
-    iconSrc: "/quests.svg",
+    iconSrc: "/icons/quests.svg",
   },
   {
     label: "shop",
     href: "/shop",
-    iconSrc: "/shop.svg",
+    iconSrc: "/icons/shop.svg",
   },
 ];
 
@@ -43,8 +43,13 @@ export const Sidebar = ({ className }: Props) => {
     >
       <Link href="/learn">
         <div className="pt-8 pl-4 pb-7 flex items-center gap-x-3">
-          <Image alt="mascot" src="/mascot.svg" height={40} width={40} />
-          <h1 className="text-2xl font-extrabold text-amber-600 tracking-wider">
+          <Image
+            alt="mascot"
+            src="/mascots/mascot.svg"
+            height={40}
+            width={40}
+          />
+          <h1 className="text-2xl font-extrabold text-green-600 tracking-wider">
             Uwulingo
           </h1>
         </div>

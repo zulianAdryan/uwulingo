@@ -17,6 +17,10 @@ export const UserProgress: React.FC<Props> = ({
   hearts,
   points,
 }) => {
+  const imageSrc = hasActiveSubscription
+    ? "/icons/premium-heart.svg"
+    : "/icons/heart.svg";
+
   return (
     <div className="flex items-center justify-between gap-x-2 w-full">
       <Link href="/courses">
@@ -33,7 +37,7 @@ export const UserProgress: React.FC<Props> = ({
       <Link href="/shop">
         <Button variant="ghost" className="text-orange-500">
           <Image
-            src="/points.svg"
+            src="/icons/points.svg"
             alt="points"
             height={28}
             width={28}
@@ -45,7 +49,7 @@ export const UserProgress: React.FC<Props> = ({
       <Link href="/shop">
         <Button variant="ghost" className="text-orange-500">
           <Image
-            src="/heart.svg"
+            src={imageSrc}
             alt="heart"
             height={22}
             width={22}

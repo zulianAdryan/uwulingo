@@ -19,15 +19,16 @@ const main = async () => {
     await db.delete(schema.challenges);
     await db.delete(schema.challengeOptions);
     await db.delete(schema.challengeProgress);
+    await db.delete(schema.userSubscription);
 
     await db.insert(schema.courses).values([
-      { id: 1, title: "English", imageSrc: "/uk.svg" },
-      { id: 2, title: "Indonesia", imageSrc: "/id.svg" },
-      { id: 3, title: "Japanese", imageSrc: "/jp.svg" },
-      { id: 4, title: "Italy", imageSrc: "/it.svg" },
-      { id: 5, title: "Spanish", imageSrc: "/es.svg" },
-      { id: 6, title: "Korean", imageSrc: "/kr.svg" },
-      { id: 7, title: "Germany", imageSrc: "/gr.svg" },
+      { id: 1, title: "English", imageSrc: "/flags/uk.svg" },
+      { id: 2, title: "Indonesia", imageSrc: "/flags/id.svg" },
+      { id: 3, title: "Japanese", imageSrc: "/flags/jp.svg" },
+      // { id: 4, title: "Italy", imageSrc: "/flags/it.svg" },
+      // { id: 5, title: "Spanish", imageSrc: "/flags/es.svg" },
+      // { id: 6, title: "Korean", imageSrc: "/flags/kr.svg" },
+      // { id: 7, title: "Germany", imageSrc: "/flags/gr.svg" },
     ]);
 
     await db.insert(schema.units).values([
@@ -81,32 +82,132 @@ const main = async () => {
         order: 1,
         question: 'Which one of these is "the man"?',
       },
+      {
+        id: 2,
+        lessonId: 1, // Nouns
+        type: "ASSIST",
+        order: 2,
+        question: '"the man"',
+      },
+      {
+        id: 3,
+        lessonId: 1, // Nouns
+        type: "SELECT",
+        order: 3,
+        question: 'Which one of these is "the woman"?',
+      },
     ]);
 
     await db.insert(schema.challengeOptions).values([
       {
-        id: 1,
         challengeId: 1, // Which one of these is "the man"?
-        imageSrc: "/man.svg",
+        imageSrc: "/characters/man_1.svg",
         correct: true,
         text: "男",
-        audioSrc: "/jp_man.mp3",
+        audioSrc: "/characters/audio/jp/man_1.mp3",
       },
       {
-        id: 2,
         challengeId: 1,
-        imageSrc: "/woman.svg",
+        imageSrc: "/characters/woman_1.svg",
         correct: false,
         text: "女",
-        audioSrc: "/jp_woman.mp3",
+        audioSrc: "/characters/audio/jp/woman_1.mp3",
       },
       {
-        id: 3,
         challengeId: 1,
-        imageSrc: "/robot.svg",
+        imageSrc: "/characters/robot_1.svg",
         correct: false,
         text: "ロボット",
-        audioSrc: "/jp_robot.mp3",
+        audioSrc: "/characters/audio/jp/robot_1.mp3",
+      },
+      {
+        challengeId: 1,
+        imageSrc: "/characters/zombie_1.svg",
+        correct: false,
+        text: "ゾンビ",
+        audioSrc: "/characters/audio/jp/zombie_1.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 2,
+        correct: false,
+        text: "ロボット",
+        audioSrc: "/characters/audio/jp/robot_1.mp3",
+      },
+      {
+        challengeId: 2, // "the man"
+        correct: true,
+        text: "男",
+        audioSrc: "/characters/audio/jp/man_1.mp3",
+      },
+      {
+        challengeId: 2,
+        correct: false,
+        text: "ゾンビ",
+        audioSrc: "/characters/audio/jp/zombie_1.mp3",
+      },
+      {
+        challengeId: 2,
+        correct: false,
+        text: "女",
+        audioSrc: "/characters/audio/jp/woman_1.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        challengeId: 3, // Which one of these is "the woman"?
+        imageSrc: "/characters/robot_1.svg",
+        correct: false,
+        text: "ロボット",
+        audioSrc: "/characters/audio/jp/robot_1.mp3",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "/characters/zombie_1.svg",
+        correct: false,
+        text: "ゾンビ",
+        audioSrc: "/characters/audio/jp/zombie_1.mp3",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "/characters/woman_1.svg",
+        correct: true,
+        text: "女",
+        audioSrc: "/characters/audio/jp/woman_1.mp3",
+      },
+      {
+        challengeId: 3,
+        imageSrc: "/characters/man_1.svg",
+        correct: false,
+        text: "男",
+        audioSrc: "/characters/audio/jp/man_1.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challenges).values([
+      {
+        id: 4,
+        lessonId: 2, // Nouns
+        type: "SELECT",
+        order: 1,
+        question: 'Which one of these is "the man"?',
+      },
+      {
+        id: 5,
+        lessonId: 2, // Nouns
+        type: "ASSIST",
+        order: 2,
+        question: '"the man"',
+      },
+      {
+        id: 6,
+        lessonId: 2, // Nouns
+        type: "SELECT",
+        order: 3,
+        question: 'which one of these is "the woman"?',
       },
     ]);
 

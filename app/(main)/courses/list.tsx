@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { upsertUserProgress } from "@/actions/user-progress";
 import { toast } from "sonner";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 interface Props {
   courses: Array<typeof courses.$inferSelect>;
@@ -21,15 +22,14 @@ export const List = ({ activeCourseId, courses }: Props) => {
 
     if (id === activeCourseId) {
       router.push("/learn");
-      return;
     }
 
     startTransition(() => {
-      try {
-        upsertUserProgress(id);
-      } catch {
-        toast.error("Something went wrong");
-      }
+      upsertUserProgress(id).catch((error) => {
+        if (!isRedirectError(error)) {
+          toast.error("Something went wrong");
+        }
+      });
     });
   };
 

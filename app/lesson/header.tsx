@@ -14,6 +14,10 @@ interface Props {
 const Header = ({ hasActiveSubscription, hearts, percentage }: Props) => {
   const { open } = useExitModal();
 
+  const imageSrc = hasActiveSubscription
+    ? "/icons/premium-heart.svg"
+    : "/icons/heart.svg";
+
   return (
     <header className="lg:pt-[50px] pt-[20px] px-10 flex gap-x-7 items-center justify-between max-w-[1140px] mx-auto w-full">
       <X
@@ -23,14 +27,14 @@ const Header = ({ hasActiveSubscription, hearts, percentage }: Props) => {
       <Progress value={percentage} />
       <div className="text-rose-500 flex items-center font-bold">
         <Image
-          src="/heart.svg"
+          src={imageSrc}
           height={28}
           width={28}
           alt="heart"
           className="mr-2"
         />
         {hasActiveSubscription ? (
-          <InfinityIcon className="h-6 w-6 stroke-[3]" />
+          <InfinityIcon className="h-6 w-6 stroke-[3] shrink-0" />
         ) : (
           hearts
         )}

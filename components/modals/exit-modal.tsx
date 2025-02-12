@@ -16,8 +16,8 @@ import { Button } from "../ui/button";
 
 export const ExitModal = () => {
   const router = useRouter();
-  const [isClient, setIsClient] = useState(false);
   const { isOpen, close } = useExitModal();
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => setIsClient(true), []);
 
@@ -28,7 +28,12 @@ export const ExitModal = () => {
       <DialogContent className="max-w-md">
         <DialogHeader>
           <div className="flex items-center w-full justify-center mb-5">
-            <Image src="/mascot_sad.svg" alt="mascot" height={80} width={80} />
+            <Image
+              src="/mascots/mascot_sad.svg"
+              alt="mascot"
+              height={80}
+              width={80}
+            />
           </div>
           <DialogTitle className="text-center font-bold text-2xl">
             Wait, don&apos;t go

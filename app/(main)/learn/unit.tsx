@@ -3,8 +3,8 @@ import UnitBanner from "./unit-banner";
 import LessonButton from "./lesson-button";
 
 interface Props {
-  id: number;
-  order: number;
+  id?: number;
+  order?: number;
   description: string;
   title: string;
   lessons: Array<typeof lessons.$inferSelect & { completed: boolean }>;
@@ -15,12 +15,10 @@ interface Props {
 }
 
 const Unit: React.FC<Props> = ({
-  id,
   activeLessonPercentage,
   description,
   lessons,
   activeLesson,
-  order,
   title,
 }) => {
   return (
